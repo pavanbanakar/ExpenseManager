@@ -1,0 +1,13 @@
+.container{
+  width: 100%
+}
+
+.registration-form{
+      display: flex;
+      flex-direction: column;
+      margin: 20px;
+  }
+  .registration-form > * {
+    width: 100%;
+  }
+   
