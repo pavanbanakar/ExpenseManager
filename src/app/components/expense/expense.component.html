@@ -1,0 +1,41 @@
+<div class="container">
+  <form  [formGroup]="expenseForm"  (ngSubmit)="submit()">
+
+    <mat-card class="card">
+      <mat-card-content>
+        <div class="mat-elevation-z8 expense-form">
+
+          <mat-form-field>
+            <input matInput placeholder="Title"  formControlName="title">
+              <mat-error *ngIf="hasError('title', 'required')">title is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <input matInput placeholder="Amount"  formControlName="amount" type="number">
+            <mat-error *ngIf="hasError('amount', 'required')">amount is required</mat-error>
+          </mat-form-field>
+
+
+          <mat-form-field>
+            <input matInput [matDatepicker]="picker" placeholder="choose a date" formControlName="date" >
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            <mat-error *ngIf="hasError('date', 'required')">date is required</mat-error>
+            
+          </mat-form-field>
+
+          <mat-form-field>
+            <textarea matInput placeholder="Description"
+              formControlName="description"></textarea>
+          </mat-form-field>
+        </div>
+      </mat-card-content>
+      
+      <mat-card-actions align="center">
+          <button mat-raised-button color="primary" [disabled]="!expenseForm.valid">Create</button>
+          <button type="button" mat-raised-button color="warn" routerLink="/expenses">Cancel</button>
+      </mat-card-actions>
+    </mat-card>
+  </form>
+
+</div>

@@ -32,6 +32,7 @@ import {MatAutocompleteModule,
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatFormFieldModule,
     MatTreeModule} from '@angular/material';
 import { NgModule } from '@angular/core';
 
@@ -73,6 +74,7 @@ import { MAT_SNACK_BAR_DEFAULT_OPTIONS, MAT_TOOLTIP_DEFAULT_OPTIONS } from '@ang
     MatTabsModule,
     MatToolbarModule,
     MatTooltipModule,
+    MatFormFieldModule,
     MatTreeModule
         ],
         providers:[
