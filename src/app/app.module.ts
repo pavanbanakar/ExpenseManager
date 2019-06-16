@@ -9,16 +9,17 @@ import { NavigationComponent } from './components/common/navigation/navigation.c
 import { WelcomeComponent } from './components/common/welcome/welcome.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthGuard } from './services/auth.guard';
-import { JwtModule } from '@auth0/angular-jwt';
-import { FormsModule,ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthService } from './services/auth.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ExpenseListComponent } from './components/expense-list/expense-list.component';
 import { ExpenseComponent } from './components/expense/expense.component';
-import { ErrorStateMatcher, ShowOnDirtyErrorStateMatcher } from '@angular/material';
+import { ErrorStateMatcher } from '@angular/material';
 import { CustomErrorStateMatcher } from './services/custom-error-state-matcher';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 import { StopClickDirective } from './directives/stop.directive';
+import { AuthInterceptor } from './components/common/helpers/auth.interceptor';
+import { FakeRequestHandler } from './components/common/helpers/fake-request-handler.interceptor';
 
 @NgModule({
   declarations: [
@@ -40,19 +41,16 @@ import { StopClickDirective } from './directives/stop.directive';
     FlexLayoutModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule,
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: () => localStorage.getItem('access_token'),
-        whitelistedDomains: ['localhost:4000'],
-        blacklistedRoutes: ['']
-      }
-    })
+    HttpClientModule
   ],
   providers: [
     AuthGuard,
     AuthService,
-    { provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher }
+    { provide: ErrorStateMatcher, useClass: CustomErrorStateMatcher },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: FakeRequestHandler, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorStateMatcher, multi: true }
+
   ],
   bootstrap: [AppComponent]
 })

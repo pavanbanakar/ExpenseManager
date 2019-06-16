@@ -10,7 +10,7 @@ import { MatTableDataSource, MatPaginator } from '@angular/material';
 export class ExpenseListComponent implements OnInit {
 
   displayedColumns: string[] = ['id', 'title', 'date', 'amount','description'];
-  dataSource = new MatTableDataSource<Expense>(EXPENSE_DATE);
+  dataSource = new MatTableDataSource<Expense>(EXPENSES);
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
 
   constructor() { }
@@ -20,7 +20,7 @@ export class ExpenseListComponent implements OnInit {
   }
 }
 
-const EXPENSE_DATE: Expense[] = [
+const EXPENSES: Expense[] = [
   { id: '1', title: 'one', date: new Date(), description: "one", userId: '1',amount:1.0 },
   { id: '2', title: 'TWO', date: new Date(), description: "one", userId: '1',amount:1.0  },
   { id: '3', title: 'three', date: new Date(), description: "one", userId: '1',amount:1.0  },
