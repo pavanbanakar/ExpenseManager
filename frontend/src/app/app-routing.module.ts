@@ -8,16 +8,16 @@ import { ExpenseComponent } from './components/expense/expense.component';
 import { RegisterProfileComponent } from './components/register-profile/register-profile.component';
 
 const routes: Routes = [
-  {path:'',component:WelcomeComponent},
+  {path: '', component: WelcomeComponent},
   // {path:'expenses',component:ExpenseListComponent,canActivate:[AuthGuard]},
-  {path:'expenses',component:ExpenseListComponent},
-   {path:'login',component:LoginComponent},
-  {path:'expense/:id',component:ExpenseComponent},
-  {path:'register',component:RegisterProfileComponent}
+  {path: 'expenses', component: ExpenseListComponent},
+   {path: 'login', component: LoginComponent},
+  {path: 'expense/:id', component: ExpenseComponent},
+  {path: 'register', component: RegisterProfileComponent}
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { useHash: true })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

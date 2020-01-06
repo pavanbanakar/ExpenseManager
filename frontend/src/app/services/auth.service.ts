@@ -6,7 +6,7 @@ import { map } from 'rxjs/operators';
 @Injectable()
 export class AuthService {
 
-    baseUrl: string = 'http://localhost:4000';
+    baseUrl = 'http://localhost:4000';
     constructor(private http: HttpClient) {
 
     }
@@ -16,7 +16,7 @@ export class AuthService {
         return this.http.post<{ token: string }>(this.baseUrl + '/users/login', { email, password }).pipe(map(result => {
             localStorage.setItem('access_token', result.token);
             return true;
-        }))
+        }));
     }
 
     logout() {

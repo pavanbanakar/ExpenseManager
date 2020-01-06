@@ -1,0 +1,29 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "inspect": "node --inspect src/index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
+    "async": "^3.0.1",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "jsonwebtoken": "^8.5.0",
+    "mongoose": "^5.4.17",
+    "multer": "^1.4.1",
+    "nodemailer": "^6.2.1",
+    "validator": "^10.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
